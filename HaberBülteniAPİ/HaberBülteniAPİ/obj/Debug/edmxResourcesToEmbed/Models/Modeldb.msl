@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping CdmEntityContainer="HaberBülteniApiDBEntities" StorageEntityContainer="HaberBülteniDBModelStoreContainer">
+    <EntitySetMapping Name="Haber">
+      <EntityTypeMapping TypeName="HaberBülteniDBModel.Haber">
+        <MappingFragment StoreEntitySet="Haber">
+          <ScalarProperty Name="haberTarih" ColumnName="haberTarih" />
+          <ScalarProperty Name="haberKategoriId" ColumnName="haberKategoriId" />
+          <ScalarProperty Name="haberYazarId" ColumnName="haberYazarId" />
+          <ScalarProperty Name="haberFoto" ColumnName="haberFoto" />
+          <ScalarProperty Name="haber" ColumnName="haber" />
+          <ScalarProperty Name="haberOzet" ColumnName="haberOzet" />
+          <ScalarProperty Name="haberBaslik" ColumnName="haberBaslik" />
+          <ScalarProperty Name="haberId" ColumnName="haberId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="HaberBülteniDBModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="kategoriAd" ColumnName="kategoriAd" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uye">
+      <EntityTypeMapping TypeName="HaberBülteniDBModel.Uye">
+        <MappingFragment StoreEntitySet="Uye">
+          <ScalarProperty Name="uyeYetki" ColumnName="uyeYetki" />
+          <ScalarProperty Name="uyeAd" ColumnName="uyeAd" />
+          <ScalarProperty Name="uyeSifre" ColumnName="uyeSifre" />
+          <ScalarProperty Name="uyeMail" ColumnName="uyeMail" />
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yazar">
+      <EntityTypeMapping TypeName="HaberBülteniDBModel.Yazar">
+        <MappingFragment StoreEntitySet="Yazar">
+          <ScalarProperty Name="yazarResim" ColumnName="yazarResim" />
+          <ScalarProperty Name="yazarBilgi" ColumnName="yazarBilgi" />
+          <ScalarProperty Name="yazarAdSoyad" ColumnName="yazarAdSoyad" />
+          <ScalarProperty Name="yazarId" ColumnName="yazarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yorum">
+      <EntityTypeMapping TypeName="HaberBülteniDBModel.Yorum">
+        <MappingFragment StoreEntitySet="Yorum">
+          <ScalarProperty Name="yorumTarih" ColumnName="yorumTarih" />
+          <ScalarProperty Name="yorumHaberId" ColumnName="yorumHaberId" />
+          <ScalarProperty Name="yorumUyeId" ColumnName="yorumUyeId" />
+          <ScalarProperty Name="yorumIcerik" ColumnName="yorumIcerik" />
+          <ScalarProperty Name="yorumId" ColumnName="yorumId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

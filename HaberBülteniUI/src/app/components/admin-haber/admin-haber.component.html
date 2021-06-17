@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Haberler</h2>
+  <button mat-fab color="primary" matTooltip="Kategori Ekle"(click)="Ekle()">
+    <mat-icon aria-label="label">add</mat-icon>
+  </button>
+  <p>&nbsp;</p>
+
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="haberBaslik">
+    <mat-header-cell *matHeaderCellDef> Haber Başlık
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.haberBaslik}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="detay">
+    <mat-header-cell *matHeaderCellDef> Menü
+    </mat-header-cell>
+    <mat-cell *matCellDef="let kayit"> {{kayit.detay}}
+    <button mat-icon-button color="primary" matTooltip="Düzenle">
+      <mat-icon aria-label="label">edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" matTooltip="Sil" (click)="Sil(kayit)">
+      <mat-icon aria-label="label">delete</mat-icon>
+    </button>
+    
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>

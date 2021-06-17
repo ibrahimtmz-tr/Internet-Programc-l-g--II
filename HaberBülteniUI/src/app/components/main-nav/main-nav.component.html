@@ -1,0 +1,12 @@
+<div class="container">
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <button mat-button [routerLink]="['/']">Anasayfa</button>
+  <button mat-button [routerLink]="['/kategori',kat.kategoriId]" *ngFor="let kat of kategoriler">{{kat.kategoriAd}}</button>
+  <button mat-button style="padding: 1rem;" [routerLink]="['/login']" *ngIf="!apiServis.oturumKontrol()">Oturum Aç </button>
+  <button mat-button (click)="OturumKapat()"*ngIf="apiServis.oturumKontrol()">Oturum Kapat </button>
+  <button mat-button [routerLink]="['/admin']"*ngIf="apiServis.oturumKontrol()" >
+    <mat-icon>admin_panel_settings</mat-icon>
+  </button>
+</mat-toolbar>
+<router-outlet></router-outlet>
+</div>

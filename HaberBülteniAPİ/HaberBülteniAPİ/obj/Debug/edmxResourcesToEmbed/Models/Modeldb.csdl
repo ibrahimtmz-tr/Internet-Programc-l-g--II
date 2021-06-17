@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HaberBülteniDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HaberBülteniApiDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Haber" EntityType="HaberBülteniDBModel.Haber" />
+    <EntitySet Name="Kategori" EntityType="HaberBülteniDBModel.Kategori" />
+    <EntitySet Name="Uye" EntityType="HaberBülteniDBModel.Uye" />
+    <EntitySet Name="Yazar" EntityType="HaberBülteniDBModel.Yazar" />
+    <EntitySet Name="Yorum" EntityType="HaberBülteniDBModel.Yorum" />
+    <AssociationSet Name="FK_Haber_ToKategori" Association="HaberBülteniDBModel.FK_Haber_ToKategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Haber" EntitySet="Haber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Haber_ToYazar" Association="HaberBülteniDBModel.FK_Haber_ToYazar">
+      <End Role="Yazar" EntitySet="Yazar" />
+      <End Role="Haber" EntitySet="Haber" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_ToHaber" Association="HaberBülteniDBModel.FK_Yorum_ToHaber">
+      <End Role="Haber" EntitySet="Haber" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorum_ToUye" Association="HaberBülteniDBModel.FK_Yorum_ToUye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Yorum" EntitySet="Yorum" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Haber">
+    <Key>
+      <PropertyRef Name="haberId" />
+    </Key>
+    <Property Name="haberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="haberBaslik" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="haberOzet" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="haber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="haberFoto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="haberYazarId" Type="Int32" Nullable="false" />
+    <Property Name="haberKategoriId" Type="Int32" Nullable="false" />
+    <Property Name="haberTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Kategori" Relationship="HaberBülteniDBModel.FK_Haber_ToKategori" FromRole="Haber" ToRole="Kategori" />
+    <NavigationProperty Name="Yazar" Relationship="HaberBülteniDBModel.FK_Haber_ToYazar" FromRole="Haber" ToRole="Yazar" />
+    <NavigationProperty Name="Yorum" Relationship="HaberBülteniDBModel.FK_Yorum_ToHaber" FromRole="Haber" ToRole="Yorum" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="kategoriId" />
+    </Key>
+    <Property Name="kategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriAd" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Haber" Relationship="HaberBülteniDBModel.FK_Haber_ToKategori" FromRole="Kategori" ToRole="Haber" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeMail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeSifre" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="uyeAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeYetki" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Yorum" Relationship="HaberBülteniDBModel.FK_Yorum_ToUye" FromRole="Uye" ToRole="Yorum" />
+  </EntityType>
+  <EntityType Name="Yazar">
+    <Key>
+      <PropertyRef Name="yazarId" />
+    </Key>
+    <Property Name="yazarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yazarAdSoyad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="yazarBilgi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="yazarResim" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Haber" Relationship="HaberBülteniDBModel.FK_Haber_ToYazar" FromRole="Yazar" ToRole="Haber" />
+  </EntityType>
+  <EntityType Name="Yorum">
+    <Key>
+      <PropertyRef Name="yorumId" />
+    </Key>
+    <Property Name="yorumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="yorumIcerik" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yorumUyeId" Type="Int32" Nullable="false" />
+    <Property Name="yorumHaberId" Type="Int32" Nullable="false" />
+    <Property Name="yorumTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Haber" Relationship="HaberBülteniDBModel.FK_Yorum_ToHaber" FromRole="Yorum" ToRole="Haber" />
+    <NavigationProperty Name="Uye" Relationship="HaberBülteniDBModel.FK_Yorum_ToUye" FromRole="Yorum" ToRole="Uye" />
+  </EntityType>
+  <Association Name="FK_Haber_ToKategori">
+    <End Type="HaberBülteniDBModel.Kategori" Role="Kategori" Multiplicity="1" />
+    <End Type="HaberBülteniDBModel.Haber" Role="Haber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="kategoriId" />
+      </Principal>
+      <Dependent Role="Haber">
+        <PropertyRef Name="haberKategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Haber_ToYazar">
+    <End Type="HaberBülteniDBModel.Yazar" Role="Yazar" Multiplicity="1" />
+    <End Type="HaberBülteniDBModel.Haber" Role="Haber" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yazar">
+        <PropertyRef Name="yazarId" />
+      </Principal>
+      <Dependent Role="Haber">
+        <PropertyRef Name="haberYazarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_ToHaber">
+    <End Type="HaberBülteniDBModel.Haber" Role="Haber" Multiplicity="1" />
+    <End Type="HaberBülteniDBModel.Yorum" Role="Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Haber">
+        <PropertyRef Name="haberId" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="yorumHaberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorum_ToUye">
+    <End Type="HaberBülteniDBModel.Uye" Role="Uye" Multiplicity="1" />
+    <End Type="HaberBülteniDBModel.Yorum" Role="Yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="Yorum">
+        <PropertyRef Name="yorumUyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

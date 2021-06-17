@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Oturum Aç</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>E-mail</mat-label>
+    <input matInput placeholder="E-mail" type="text" #kadi>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Şifre</mat-label>
+    <input matInput placeholder="Parola" type="password" #parola>
+  </mat-form-field>
+  <button mat-raised-button (click)="OturumAc(kadi.value,parola.value)">Oturum Aç</button>
+</div>

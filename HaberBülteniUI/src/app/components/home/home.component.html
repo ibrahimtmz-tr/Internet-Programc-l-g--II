@@ -1,0 +1,18 @@
+<div class="row">
+  
+<mat-card class="example-card" style="width: 20rem;" *ngFor="let haber of haberler">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{haber.haberBaslik}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{haber.haberFoto}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+        {{haber.haberOzet}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [routerLink]="['/haber',haber.haberId]">Devamını Oku</button>
+  </mat-card-actions>
+</mat-card>
+</div>

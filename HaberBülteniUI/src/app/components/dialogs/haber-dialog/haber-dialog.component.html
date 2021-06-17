@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container" *ngIf="islem!='detay'">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Başlık</mat-label>
+      <input matInput placeholder="Haber Baslik" formControlName="HaberBaslik" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>HaberOzet</mat-label>
+      <input matInput placeholder="HaberOzet" formControlName="HaberOzet" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Haber İçerik</mat-label>
+      <input matInput placeholder="Haberİçerik" formControlName="Haberİçerik" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>haberFoto</mat-label>
+      <input matInput placeholder="haberFoto" formControlName="haberFoto" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>haberFoto</mat-label>
+      <input matInput placeholder="haberFoto" formControlName="haberFoto" required>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="primary" [disabled]="frm.invalid"
+    (click)="dialogRef.close(frm.value)">Kaydet</button>&nbsp;
+  <button mat-raised-button color="primary" (click)="dialogRef.close()">İptal</button>
+</div>
